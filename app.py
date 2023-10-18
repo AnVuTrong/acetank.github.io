@@ -1,6 +1,3 @@
-# creating an app for my portfolio on streamlit cloud sharing. Using make file to run the app.
-
-#step 1: import libraries
 import streamlit as st
 import pandas as pd
 import numpy as np  
@@ -14,23 +11,74 @@ import os
 import time
 import datetime
 
-#step 2: create a title and subheader
-st.title("Vũ Trọng Ân's Portfolio")
-st.subheader("Projects | Machine Learning | Deep Learning | NLP | Data Science | Blogs | Contact")
+# STYLE:
+'''
+lighter
+----------------
+nyanza = '#E5F9E0'
+light_green = '#A3F7B5'
+viridian = '#57886C'
+feldgrau = '#466060'
+rich_black = '#0E0F19'
+----------------
+darker
+'''
 
-#step 3: create a sidebar
-st.sidebar.title("About me")
-st.sidebar.subheader("Vũ Trọng Ân")
-st.sidebar.text("Scientist wannabe")
-st.sidebar.subheader("Introduction")
-st.sidebar.text("Hello! My name is Vũ Trọng Ân. I am an aspiring scientist with a passion for data and technology. I have experience in various data analysis techniques and tools. Through my journey in the world of data, I've been able to provide valuable insights and help make data-driven decisions. This app showcases some of my data visualization projects. Feel free to explore!")
+# Create a title and subheader
+st.title("ACEtankACE's Portfolio")
+st.caption("WELCOME TO MY PERSONAL PORTFOLIO - Vũ Trọng Ân")
 
-# Load and display the image
-image_path = "E:/Work/Coding/portfolio/vutrongan.github.io/materials/image/portrail.jpg"
-image = st.sidebar.image(image_path, caption='Vũ Trọng Ân', use_column_width=True)
+# Menu options
+# Define the sections and their corresponding background colors
+pages = {
+    "🚀 Projects": "#E5F9E0",
+    "🤖 Machine Learning": "#E5F9E0",
+    "🧠 Deep Learning": "#E5F9E0",
+    "🗣️ NLP": "#E5F9E0", 
+    "📊 Data Science": "#E5F9E0",
+    "📝 Blogs": "#E5F9E0",
+    "📞 Contact": "#E5F9E0"
+}
+
+# Button style
+st.markdown("""
+    <style>
+        .btn-style {
+            display: inline-block;
+            padding: 0.5em 1.5em;
+            font-size: 16px;
+            border: none;
+            color: #E5F9E0;
+            background-color: #0E0F19;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            width: 100%;
+            border-radius: 10px;
+            margin: 0.5em 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .btn-style:hover {
+            background-color: #E5F9E0;
+            color: #0E0F19;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+selected_page = None
+for page, color in pages.items():
+    if st.sidebar.markdown(f'<button class="btn-style" style="background-color: {color}">{page}</button>', unsafe_allow_html=True):
+        selected_page = page
+
+# click on the button to select a page
+if selected_page:
+    st.title(selected_page)
+    if selected_page == "🚀 Projects":
+        st.write("Projects content goes here!")
 
 
-# Additionally, you can provide links to your social media profiles or your resume:
+# Contact section
 st.sidebar.subheader("Connect with me")
 st.sidebar.markdown("[GitHub](https://github.com/vutrongan)")
 st.sidebar.markdown("[Facebook](https://www.facebook.com/vux.aan)")
